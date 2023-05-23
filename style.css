@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     background: linear-gradient(to bottom, #e9b7ce, #ebf4f5);
-}
+  }
   
   #canvasContainer {
     margin-bottom: 20px;
@@ -24,7 +24,7 @@ body {
   }
   
   button,
-input  {
+  input {
     font-family: Helvetica;
     font-size: 30px;
     font-weight: bold;
@@ -35,5 +35,19 @@ input  {
     background-color: black;
     margin: 10px;
   }
-
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    #buttonsContainer {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    button,
+    input {
+      width: auto;
+      margin: 5px;
+    }
+  }
   
