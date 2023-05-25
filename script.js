@@ -255,26 +255,29 @@ window.addEventListener('load', () => {
   function drawText(shape) {
     const { x, y, text, fontSize, colors } = shape;
     const totalWidth = ctx.measureText(text).width;
-    const startX = canvasContainer.offsetWidth / 2 - totalWidth / 2;
     const letterSpacing = 20;
-
+  
     ctx.save();
     ctx.font = `bold ${fontSize}px Helvetica`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-
+  
     const letters = text.split('');
-
+    const letterWidth = fontSize * 0.6;
+    const totalTextWidth = letters.length * letterWidth + (letters.length - 1) * letterSpacing;
+    const startX = canvas.width / 2 - totalTextWidth / 2;
+  
     for (let i = 0; i < letters.length; i++) {
       const letter = letters[i];
       const color = colors[i % colors.length];
-
+  
       ctx.fillStyle = color;
-      ctx.fillText(letter, x + (i - letters.length / 2) * fontSize * 0.6, y);
+      ctx.fillText(letter, startX + i * (letterWidth + letterSpacing), y);
     }
-
+  
     ctx.restore();
   }
+  
 
   function resizeCanvas() {
     canvas.width = canvasContainer.offsetWidth;
